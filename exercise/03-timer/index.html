@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <style>
+        input {
+            width: 30px
+        }
+    </style>
+    <title>碼表 Stopwatch</title>
+</head>
+
+<body>
+    <center>
+        <!-- 不建議使用center，其為舊語法 -->
+        <label id="counter">10</label><br>
+        <button id="start" onclick="start()">啟動</button>
+        <button id="stop" onclick="stop()">暫停</button>
+    </center>
+    <script>
+        var counter = 10;
+        var state = stop;
+        running = false;
+
+        function showCounter() {
+            var counterLabel = document.getElementById('counter');
+            if (counter > 0) {
+                if (state === "start" && running === false) {
+                    running = true;
+                    counter--;
+                    counterLabel.innerText = counter;
+                    start();
+                }
+            }
+            else {
+                alert("Time's up");
+                counter = 10;
+                counterLabel.innerText = counter;
+                clearTimeout(t);
+            }
+        }
+
+        function start() {
+            state = "start";
+            t = setTimeout(function () {
+                showCounter();
+                running = false;
+            }, 1000)
+            t;
+        }
+
+        function stop() {
+            // state = "stop"
+            clearTimeout(t);
+        }
+    </script>
+</body>
+
+</html>

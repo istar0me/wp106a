@@ -16,6 +16,7 @@ function lpad(s, len) {
 function printTime() {
   var time = document.getElementById('time')
   var d = new Date()
+  console.log('d.getHours: '+d.getSeconds());
   time.innerText = lpad(d.getHours(), 2) + ':' + lpad(d.getMinutes(), 2) + ':' + lpad(d.getSeconds(), 2)
   setTimeout(printTime, 1000);
 }
