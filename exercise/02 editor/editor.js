@@ -17,7 +17,7 @@ const template = [
               }
               console.log('fileName=' + filePaths)
 
-              var filePathBox = document.getElementById('filePath')
+              var filePathBox = document.getElementById('filePath') = filePaths
               filePathBox.innerText = filePaths
               fs.readFile(filePaths.toString(), 'utf8', function (err, data) {
                 if (err) window.alert('read fail!')
@@ -44,9 +44,9 @@ const template = [
         click: function () {
           var filePathBox = document.getElementById('filePath')
           //  .innerText
-          console.log('filePathBox = '+filePathBox)
+          console.log('filePathBox = ' + filePathBox)
           filePathBox.innerText = "*.txt"
-          console.log('filePathBox(After) = '+filePathBox)          
+          console.log('filePathBox(After) = ' + filePathBox)
           var text = document.getElementById('text')
           text.value = null
         }
@@ -66,11 +66,7 @@ const template = [
           if (filePathBox.trim().length === 0) window.alert('No file loaded!')
           var text = document.getElementById('text')
           dialog.showSaveDialog(
-            // {
-            //   options: {
-            //     defaultPath: filePathBox
-            //   }
-            // }
+            { filters: [{name : 'file', extensions : ['*']},{ name : 'text', extensions : ['txt'] }, { name : 'markdown', extensions : ['md']}] },
             function (filePaths) {
               fs.writeFile(filePaths.toString(), text.value, function (err) {
                 if (err) window.alert('save as ... fail!')
