@@ -1,4 +1,4 @@
-const { Menu, dialog } = require('electron').remote
+const {Menu, dialog} = require('electron').remote
 const fs = require('fs')
 
 const template = [
@@ -10,16 +10,16 @@ const template = [
         accelerator: 'CmdOrCtrl+O',
         click: function () {
           dialog.showOpenDialog(
-            function (filePaths) {
-              if (filePaths === undefined) {
+            function (fileName) {
+              if (fileName === undefined) {
                 console.log('No file selected')
                 return
               }
-              console.log('fileName=' + filePaths)
+              console.log('fileName=' + fileName)
 
-              var filePathBox = document.getElementById('filePath')
-              filePathBox.innerText = filePaths
-              fs.readFile(filePaths.toString(), 'utf8', function (err, data) {
+              var filePath = document.getElementById('filePath')
+              filePath.innerText = fileName
+              fs.readFile(fileName.toString(), 'utf8', function (err, data) {
                 if (err) window.alert('read fail!')
                 var text = document.getElementById('text')
                 text.value = data
@@ -32,54 +32,11 @@ const template = [
         label: 'Save',
         accelerator: 'CmdOrCtrl+S',
         click: function () {
-          var filePathBox = document.getElementById('filePath').innerText
-          if (filePathBox.trim().length === 0) window.alert('No file loaded!')
+          var fileName = document.getElementById('filePath').innerText
+          if (fileName.trim().length === 0) window.alert('No file loaded!')
           var text = document.getElementById('text')
-          fs.writeFile(filePathBox, text.value)
+          fs.writeFile(fileName, text.value)
         }
-      },
-      {
-        label: 'Open new file',
-        accelerator: 'CmdOrCtrl+N',
-        click: function () {
-          var filePathBox = document.getElementById('filePath')
-          //  .innerText
-          console.log('filePathBox = '+filePathBox)
-          filePathBox.innerText = "*.txt"
-          console.log('filePathBox(After) = '+filePathBox)          
-          var text = document.getElementById('text')
-          text.value = null
-        }
-      },
-      // {
-      //   label: 'Close',
-      //   accelerator: 'CmdOrCtrl+W',
-      //   click: function () {
-
-      //   }
-      // },
-      {
-        label: "Save file as",
-        accelerator: 'CmdOrCtrl+Shift+S',
-        click: function () {
-          var filePathBox = document.getElementById('filePath').innerText
-          if (filePathBox.trim().length === 0) window.alert('No file loaded!')
-          var text = document.getElementById('text')
-          dialog.showSaveDialog(
-            // {
-            //   options: {
-            //     defaultPath: filePathBox
-            //   }
-            // }
-            function (filePaths) {
-              fs.writeFile(filePaths.toString(), text.value, function (err) {
-                if (err) window.alert('save as ... fail!')
-                console.log('file have saved.')
-              })
-            }
-          )
-        }
-
       }
     ]
   },
@@ -116,7 +73,7 @@ const template = [
   },
   {
     role: 'help',
-    submenu: [{ label: 'Learn More' }]
+    submenu: [ { label: 'Learn More' } ]
   }
 ]
 

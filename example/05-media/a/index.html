@@ -1,39 +1,34 @@
 <!DOCTYPE html>
 <html>
-
 <head>
   <meta charset="UTF-8">
   <title>影片播放</title>
 </head>
-
 <body>
-  <script>
-
-  </script>
-  <script>
-    function OpenFile() {
-      const { dialog } = require('electron').remote
-      // const dialog = require('electron').remote.dialog
-      var file = dialog.showOpenDialog(
-        function (filePaths) {
-          if (filePaths === undefined) {
+<script>
+</script>
+<script>
+function OpenFile() {
+  const {dialog} = require('electron').remote
+  var file = dialog.showOpenDialog(
+      function (fileName) {
+        if(fileName === undefined){
             alert("No file selected")
             return
-          }
-          var filePathBox = document.getElementById('filePath')
-          filePathBox.innerText = filePaths
-          var videoControl = document.getElementById('videoControl')
-          videoControl.setAttribute("src", filePaths[0])
-          console.log('file=', filePaths[0])
         }
-      )
-    }
-  </script>
+        var filePath = document.getElementById('filePath') 
+        filePath.innerText = fileName
+        var videoControl = document.getElementById('videoControl')
+        videoControl.setAttribute("src", fileName)
+      }
+    )
+  console.log('file=' , file)
+}
+</script>
   <button onclick="OpenFile()">OpenFile</button>
   <label id="filePath"></label><br/>
   <video id="videoControl" style="width:100%; height:80vh" controls>
-    您的瀏覽器不支援此 HTML5 影片標籤
+  您的瀏覽器不支援此 HTML5 影片標籤
   </video>
 </body>
-
 </html>
