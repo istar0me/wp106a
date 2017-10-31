@@ -2,23 +2,34 @@
 <html>
 
 <head>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!--匯入Bootstrap CSS-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <!--匯入BootStrap JS-->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!--匯入Bootstrap CSS-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <!--匯入BootStrap JS-->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <meta charset="UTF-8">
   <title>Markdown Viewer</title>
   <style>
     #input {
       float: left;
-      width:50%;
-      margin:0;
+      width: 50%;
+      height: 500px;
+      margin: 0;
     }
+
     #output {
       float: right;
-      width:50%;
-      margin:0;
+      width: 50%;
+      margin: 0;
+    }
+
+    #html {
+      height: 500px;
+      overflow: scroll;
+    }
+
+    body {
+      margin: 5px;
     }
   </style>
 </head>
@@ -32,14 +43,15 @@
   <br/>
   <div>
     <div id="input">
-      原始檔案 : 
-      <textarea id="md" style="width:94%; height:80vh; margin: 0 auto">
+      原始檔案 :
+      <textarea id="md" style="width:94%; height:80vh">
 # 複習 node.js 基礎
 * [匿名函數](https://ccckmit.gitbooks.io/javascript/content/ch4/chapter4.html)
 * 回呼(callback)
 
 # Destructing Assignment
 > 為 ES6 新增的語法，可看[MDN](https://goo.gl/Vr1NJ7)上的介紹
+
 新版寫法：
 
 ```javascript
@@ -93,12 +105,13 @@ console.log("n=", n, " a=", a);
       </textarea>
     </div>
     <div id="output">
-      Markdown 格式 : <br>
+      轉換結果 :
+      <button onclick="viewer.md2html()">點擊轉換</button>
+      <br>
       <div id="html">
       </div>
-    <button onclick="viewer.md2html()">點擊轉換</button>
-  </div>
-  <script>document.onload = viewer.md2html()</script>
+    </div>
+    <script>document.onload = viewer.md2html()</script>
 </body>
 
 </html>
