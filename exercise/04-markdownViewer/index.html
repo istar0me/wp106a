@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!--匯入Bootstrap CSS-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!--匯入BootStrap JS-->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <meta charset="UTF-8">
+  <title>Markdown Viewer</title>
+  <style>
+    #input {
+      float: left;
+      width:50%;
+      margin:0;
+    }
+    #output {
+      float: right;
+      width:50%;
+      margin:0;
+    }
+  </style>
+</head>
+
+<body>
+  <script>
+    var viewer = require('./viewer')
+    var editor = require('./editor')
+  </script>
+  <label id="filePath"></label>
+  <br/>
+  <div>
+    <div id="input">
+      原始檔案 : 
+      <textarea id="md" style="width:94%; height:80vh; margin: 0 auto">
+# 複習 node.js 基礎
+* [匿名函數](https://ccckmit.gitbooks.io/javascript/content/ch4/chapter4.html)
+* 回呼(callback)
+
+# Destructing Assignment
+> 為 ES6 新增的語法，可看[MDN](https://goo.gl/Vr1NJ7)上的介紹
+新版寫法：
+
+```javascript
+const {app, BrowserWindows} = require('electron')
+```
+舊版寫法：
+
+```javascript
+const electron = require('electron')
+const app = electron.app
+const BrowserWindows = electron.BrowserWindow
+```
+### Default values
+A variable can be assigned a default, in the case that the value unpacked from the array is undefined.
+
+```javascript
+var a, b;
+
+[a=5, b=7] = [1,2];
+console.log(a); // 1
+console.log(b); // 2
+```
+
+# 雜記
+* 使用 electron.js 製作的網頁需儲存為 UTF-8 編碼
+* `process.versions.node` 顯示 node 版本資訊
+* [[ES6] Javascript 開發者必須知道的 10 個新功能](https://goo.gl/neRmQf)
+* `__dirname` 為一個預設的變數，代表當前資料夾路徑
+* `win.webContents.openDevTools()` 開啟開發人員工具
+* 一個 Process 有自己的CPU、記憶體空間，不與其他 Process 發生衝突
+    * node.js 只會占用一個 Process
+    * 可在工作管理員內的**處理程序**查看
+* 傳值與傳址
+
+```javascript
+function modify(num, array) {
+  num = num + 1;
+  array[0] = array[0] + 1;    
+}
+
+var n=3, a=[3,2,1];
+
+modify(n, a);
+// n 僅傳值(複製)給 num，跟原先的檔案不同  
+// a 傳址(重新命名)給 array，與原先的檔案相關
+
+console.log("n=", n, " a=", a);
+// output:
+// n= 3 , a= [4, 2, 1]
+```
+      </textarea>
+    </div>
+    <div id="output">
+      Markdown 格式 : <br>
+      <div id="html">
+      </div>
+    <button onclick="viewer.md2html()">點擊轉換</button>
+  </div>
+  <script>document.onload = viewer.md2html()</script>
+</body>
+
+</html>
