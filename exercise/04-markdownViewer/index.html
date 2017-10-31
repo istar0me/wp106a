@@ -11,16 +11,16 @@
   <title>Markdown Viewer</title>
   <style>
     #input {
-      float: left;
-      width: 50%;
-      height: 500px;
-      margin: 0;
+      /* float: left; */
+      /* width: 50%; */
+      /* height: 500px; */
+      /* margin: 0; */
     }
 
     #output {
-      float: right;
-      width: 50%;
-      margin: 0;
+      /* float: right; */
+      /* width: 50%; */
+      /* margin: 0; */
     }
 
     #html {
@@ -28,8 +28,14 @@
       overflow: scroll;
     }
 
-    body {
+    /* body {
       margin: 5px;
+    } */
+
+    html,
+    body {
+      margin: 0;
+      padding: 0
     }
   </style>
 </head>
@@ -41,10 +47,13 @@
   </script>
   <label id="filePath"></label>
   <br/>
-  <div>
-    <div id="input">
-      原始檔案 :
-      <textarea id="md" style="width:94%; height:80vh">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-6">
+        <div id="input">
+          原始檔案 :
+          <textarea id="md" style="width:94%; height:80vh">
+            
 # 複習 node.js 基礎
 * [匿名函數](https://ccckmit.gitbooks.io/javascript/content/ch4/chapter4.html)
 * 回呼(callback)
@@ -103,15 +112,18 @@ console.log("n=", n, " a=", a);
 // n= 3 , a= [4, 2, 1]
 ```
       </textarea>
-    </div>
-    <div id="output">
-      轉換結果 :
-      <button onclick="viewer.md2html()">點擊轉換</button>
-      <br>
-      <div id="html">
+        </div>
+      </div>
+      <div id="output" class="col-xs-6">
+        轉換結果 :
+        <button onclick="viewer.md2html()">點擊轉換</button>
+        <br>
+        <div id="html">
+        </div>
       </div>
     </div>
-    <script>document.onload = viewer.md2html()</script>
+  </div>
+  <script>document.onload = viewer.md2html()</script>
 </body>
 
 </html>
