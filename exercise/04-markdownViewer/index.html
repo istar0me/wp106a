@@ -44,7 +44,7 @@
   <script src="viewer2.js"></script>
   <script>
     // var viewer = require('./viewer2')
-    var editor = require('./editor')
+    // var editor = require('./editor')
   </script>
   <label id="filePath"></label>
   <br/>
@@ -117,14 +117,14 @@ console.log("n=", n, " a=", a);
       </div>
       <div id="output" class="col-xs-6">
         轉換結果 :
-        <button onclick="viewer.md2html()">點擊轉換</button>
+        <button onclick="md2html()">點擊轉換</button>
         <br>
         <div id="html">
         </div>
       </div>
     </div>
   </div>
-  <script>document.onload = viewer.md2html()</script>
+  <script>document.onload = md2html()</script>
 </body>
 
 </html>
