@@ -2,10 +2,7 @@
 
 ```
 $ npm install -g browserify
-$ browserify uniqNode.js -o web/uniq.js
 ```
-
-web/uniq.js 將會是瀏覽器可以直接引用的檔案！
 
 若要讓某個模組可以在瀏覽器內全域使用，應該使用全域變數引用該模組！
 
@@ -20,13 +17,13 @@ marked = require('marked')
 然後用下列指令：
 
 ```
-$ browserify markedMain.js -o web/marked.js
+$ browserify markedMain.js -o marked.js
 ```
 
 接著在 HTML 內用下列語法引入：
 
 ```html
-<script src="web/marked.js">
+<script src="marked.js"></script>
 
 ```
 
