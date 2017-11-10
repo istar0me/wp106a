@@ -16,7 +16,7 @@ console.log(`[test]
 before : I am using __markdown__.
 after : ${marked('I am using __markdown__.')}`);
 
-M.md2html = function() {
+md2html = function() {
   var md = document.getElementById('md')
   var html = document.getElementById('html')
   // html.value = marked(md.value)
