@@ -23,7 +23,7 @@
 教師姓名   | 陳鍾誠
 上課教材   | [wiki](https://github.com/cccnqu/wp106a/wiki)
 程式範例   | [example](example)
-練習作業   | [exercise](exercise)
-專案作品   | [project](project)
-學習筆記   | [wiki](../../wiki)
+練習作業   | [Markdown-viewer](https://rawgit.com/istar0me/wp106a/master/exercise/04-markdownViewer/index.html)
+專案作品   | [istar0me/expense-manager: Easily track your daily expense.](https://github.com/istar0me/expense-manager)
+學習筆記   | [林柏億的學習筆記](../../wiki)
 疑問解答   | [issue](https://github.com/cccnqu/wp106a/issues)
